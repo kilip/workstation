@@ -1,14 +1,16 @@
 ---
-name: Live
+name: CI
 on:
   workflow_dispatch:
   push:
     paths:
+      - .github/workflows/ci.yml
       - inventory/**
       - molecule/default/**
     branches: [main]
   pull_request:
     paths:
+      - .github/workflows/ci.yml
       - inventory/**
       - molecule/default/**
     branches: [main]
@@ -61,4 +63,4 @@ jobs:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DIST: ${{ matrix.distro }}
-          PROJECT_DIR: ${{ GITHUB_WORKSPACE}}
+          PROJECT_DIR: ${{ env.GITHUB_WORKSPACE}}
