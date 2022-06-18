@@ -68,8 +68,7 @@ jobs:
       - name: Export secrets
         run: |
           direnv allow
-          mkdir -p $(dirname $SOPS_AGE_KEY_FILE)
-          mkdir -p $(dirname $ANSIBLE_VAULT_PASSWORD_FILE)
+          mkdir -p .private/secrets
           echo ${{ secrets.WS_AGE_SECRET_KEY }} > $SOPS_AGE_KEY_FILE
           echo ${{ secrets.WS_VAULT_PASSWORD }} > $ANSIBLE_VAULT_PASSWORD_FILE
       - name: Run Molecule tests.
