@@ -1,6 +1,5 @@
 ---
-
 build_development: yes
-build_brew: yes
+build_brew: no
 phpbrew: yes
 pyenv: yes
