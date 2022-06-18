@@ -40,11 +40,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      includes:
-        - distro: ubuntu-22.04
-          group: servers
-        - distro: ubuntu-22.04
-          group: workstations
+      matrix:
+        includes:
+          - distro: ubuntu-22.04
+            group: servers
+          - distro: ubuntu-22.04
+            group: workstations
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v3
