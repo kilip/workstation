@@ -1,6 +1,9 @@
 # shell section
 build_shell: true
+
 omf: true
+omf_theme: bobthefish
+
 omz: true
 
 packages:

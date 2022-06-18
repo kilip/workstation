@@ -1,5 +1,16 @@
 ---
-build_development: yes
+# brew groups configuration
 build_brew: no
+
+# Development groups configuration
+build_development: yes
 phpbrew: yes
 pyenv: yes
+vscode: yes
+vagrant: yes
+virtualbox: yes
+
+# Desktop groups configuration
+build_desktop: yes
+google_chrome: yes
+regolith: yes

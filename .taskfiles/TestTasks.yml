@@ -8,6 +8,11 @@ tasks:
     cmds:
       - molecule converge
 
+  destroy:
+    desc: Execute molecule destroy task
+    cmds:
+      - molecule destroy
+
   login:
     desc: Login into test node
     cmds:
