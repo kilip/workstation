@@ -2,3 +2,4 @@
 collections:
   - name: kilip.workstation
     version: ">=1.0.3"
+  - name: community.sops.sops
