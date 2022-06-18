@@ -1,0 +1,8 @@
+---
+build_brew: no
+
+regolith: no
+google_chrome: no
+vscode: no
+virtualbox: no
+vagrant: no

@@ -22,6 +22,7 @@ provisioner:
   inventory:
     links:
       group_vars: ../../inventory/group_vars
+      host_vars: ../../inventory/host_vars
   config_options:
     defaults:
       vars_plugins_enabled: host_group_vars,community.sops.sops
