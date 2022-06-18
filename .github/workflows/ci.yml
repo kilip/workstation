@@ -41,7 +41,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        includes:
+        include:
           - distro: ubuntu-22.04
             group: servers
           - distro: ubuntu-22.04
