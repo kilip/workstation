@@ -6,5 +6,8 @@
     "**/molecule/*/playbook-*.yml": "ansible",
     "**/playbook-*.yml": "ansible",
     "**/.envrc*": "shellscript"
+  },
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-vars.json": "file:///home/toni/project/ansible/playbook/live-workstation/inventory/group_vars/workstations.yml"
   }
 }
