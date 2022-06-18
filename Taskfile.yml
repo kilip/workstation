@@ -1,5 +1,8 @@
 version: 3
 
+includes:
+  test: .taskfiles/TestTasks.yml
+  sops: .taskfiles/SopsTasks.yml
 tasks:
 
   deps:
@@ -17,11 +20,6 @@ tasks:
     desc: Build workstation
     cmds:
       - ansible-playbook playbook-build.yml
-
-  login:
-    desc: Login into test node
-    cmds:
-      - molecule login
 
   age:generate:key:
     desc: 'Generate age key to: {{.SOPS_AGE_KEY_FILE}}'

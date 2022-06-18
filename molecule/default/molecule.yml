@@ -13,8 +13,7 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     groups:
-      - workstations
-      - servers
+      - ${WS_TEST_GROUP:-workstations}
 
 provisioner:
   name: ansible

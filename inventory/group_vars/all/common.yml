@@ -1,5 +1,5 @@
+# shell section
 build_shell: true
-
 omf: true
 omz: true
 
