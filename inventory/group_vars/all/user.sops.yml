@@ -6,6 +6,9 @@ user_gpg_keys:
     - file: ENC[AES256_GCM,data:qCAxB5XdTnd2ttVnSuErwqN9rpXn7UWG+aw8Gw==,iv:sx8wjGjdKcBibpTUStt1aJroXU/muAEJIqK54hwSkVs=,tag:DhTbMj9hZY3nhKnPRrxhPQ==,type:str]
     - file: ENC[AES256_GCM,data:CdKxwYo8Oai4aACKwUSaWqLXv3zKfRiJG4FLiw==,iv:+Jg6EqeQIZyeXd7HLfz8NBob+y/j9xx18KAZZasVtsQ=,tag:7ToJ5tKE4a1gXy3R2suIWQ==,type:str]
 user_shell: ENC[AES256_GCM,data:iF0OoLJ+ONPBtsppdA==,iv:J3bU0xJ3ge/cekXdVsGvdLgrz2BCMgz8t/dggZQ6npw=,tag:M68Tm9GYfaFa4z6FKDuRiw==,type:str]
+git_clone:
+    - repo: ENC[AES256_GCM,data:YzKQ01+8NO7BtpV+MfupvrdHdY7LDaSBRp70aVS5mle3c6bJOiqD,iv:B3ccJ2gaSjgjR84FW2PaCaKxHH7MusLhEIUej0xopU0=,tag:B6Dk1ASqxK9+YIDmg3AIPA==,type:str]
+      dest: ENC[AES256_GCM,data:AWU/YGe/U5aaKkbtP8ClCKh4HGU5FnWprDPFw6Tr/A==,iv:9jxhTX0lilxF92z/Kk/kUY54Z1Cjd6yolnsxxSUC3vw=,tag:LuQ7jZmz/XPWGgHtFetcIQ==,type:str]
 git_config:
     - name: ENC[AES256_GCM,data:QBOPJ+zM8QI40rXu8V3O,iv:71YITRnO7RkI/yhhPLYgMZuXql2TUn5f1NDnJO9xvQ8=,tag:XBoabJyDm2b74ORB96onWw==,type:str]
       value: ENC[AES256_GCM,data:Y4hHcnOjqkXWBqsvVSLlRg==,iv:w7bHNAC8NJItp0N/A99v7ikyAB6ahhUzj6jEITTKMas=,tag:GFdI77zWvin1qrSA7CtFDQ==,type:str]
@@ -37,8 +40,8 @@ sops:
             SmlvZTZRZXo4aGovMkR3OFpXMndEZUkK5idMKoH75RSyvj+wpaA4rUlz5jXGR1WI
             djOgjRfyU5XEDxkXNlxaitnPrc897I3cXGetRooyAlc6f2liue3cxw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-06-18T04:31:02Z"
-    mac: ENC[AES256_GCM,data:bx7jqDvdOnev4BT1htQyfdrWjeJ9aLeOpRGgxq9B2ClURsbEehWFo3HoWF9ek1wiXWjdO5fXvElYl498x0Crwg35/OGxZepBDtOT2vaUWKwk/ueI0JlR0EzyPOTI6Oo1T1EXOKL8NvGqZFLXU7QTXhFAlSYc820YnIyfXLKJVrA=,iv:2UO3zWNeFGWWDCxmZ3hp+9WOr3BZun9HdNGqarJFpkc=,tag:CFj4812xk6h8RxQI9OIrTg==,type:str]
+    lastmodified: "2022-06-18T05:06:48Z"
+    mac: ENC[AES256_GCM,data:KWdwmCREi6bMi7qGffdzeQ3w6QYCI7yYcDH20s13q4DSA84LJuAAvpc3YytFSw/qjnbtLdpYxEO2I2et1n/t8ovb8apdRkg9hcApcwumLuOyba66k+qIz78ybMiio3oT6pT5wcvjlzTnc1gJwPtWSrndwTmVn2lhoq9BSbVq7ks=,iv:OHw3nH1Fze8pkoWVCOnt+IZNiu57NameLW6n7hKCQzc=,tag:UlGW6uwFf9tM5824HQnRrA==,type:str]
     pgp: []
     unencrypted_regex: '---'
     version: 3.7.3

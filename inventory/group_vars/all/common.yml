@@ -3,5 +3,8 @@ build_shell: true
 omf: true
 omz: true
 
+packages:
+  - pass
+
 proxy: "{{ lookup('env', 'WS_PROXY') }}"
 proxy_cert: "{{ lookup('env', 'WS_PROXY_CERT') }}"
