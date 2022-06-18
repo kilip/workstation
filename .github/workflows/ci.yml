@@ -59,9 +59,6 @@ jobs:
       - name: Install direnv
         run: sudo apt-get install -y direnv
 
-      - name: Install test dependencies.
-        run: make ansible-deps
-
       - name: Install mozilla sops
         uses: mdgreenwald/mozilla-sops-action@v1.2.0
 
@@ -69,8 +66,12 @@ jobs:
         run: |
           direnv allow
           mkdir -p .private/secrets
-          echo ${{ secrets.WS_AGE_SECRET_KEY }} > $SOPS_AGE_KEY_FILE
-          echo ${{ secrets.WS_VAULT_PASSWORD }} > $ANSIBLE_VAULT_PASSWORD_FILE
+          echo ${{ secrets.WS_AGE_SECRET_KEY }} > .private/secrets/age.txt
+          echo ${{ secrets.WS_VAULT_PASSWORD }} > .private/secrets/vault-password.txt
+
+      - name: Install test dependencies.
+        run: make ansible-deps
+
       - name: Run Molecule tests.
         run: |
           direnv allow
