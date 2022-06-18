@@ -59,6 +59,9 @@ jobs:
           python-version: "3.10"
           cache: pip
 
+      - name: Install mozilla sops
+        uses: mdgreenwald/mozilla-sops-action@v1.2.0
+
       - name: Install test dependencies.
         run: make ansible-deps
 
