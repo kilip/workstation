@@ -1,0 +1,30 @@
+---
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+platforms:
+  - name: instance
+    image: kilip/molecule-${DIST:-ubuntu-22.04}
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    groups:
+      - workstations
+      - servers
+
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ../../playbook-build.yml
+  inventory:
+    links:
+      group_vars: ../../inventory/group_vars
+  config_options:
+    defaults:
+      vars_plugins_enabled: host_group_vars,community.sops.sops
+verifier:
+  name: ansible

@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include live-workstation"
+      include_role:
+        name: "live-workstation"
