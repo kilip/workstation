@@ -77,10 +77,14 @@ jobs:
 
       - name: Run Molecule tests.
         run: |
+          touch .envrc.local
           direnv allow
+          echo $PROJECT_DIR
           make testing
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DIST: ${{ matrix.distro }}
           WS_TEST_GROUP: ${{ matrix.group }}
+          SOPS_AGE_KEY_FILE: ".private/secrets/age.txt"
+          ANSIBLE_VAULT_PASSWORD_FILE: ".private/secrets/vault-password.txt"
