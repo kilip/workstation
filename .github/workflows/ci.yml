@@ -66,8 +66,11 @@ jobs:
         run: |
           direnv allow
           mkdir -p .private/secrets
-          echo ${{ secrets.WS_AGE_SECRET_KEY }} > .private/secrets/age.txt
-          echo ${{ secrets.WS_VAULT_PASSWORD }} > .private/secrets/vault-password.txt
+          echo "${AGE_SECRET_KEY}" > .private/secrets/age.txt
+          echo "${VAULT_PASSWORD}" > .private/secrets/vault-password.txt
+        env:
+          AGE_SECRET_KEY: ${{ secrets.WS_AGE_SECRET_KEY}}
+          VAULT_PASSWORD: ${{ secrets.WS_VAULT_PASSWORD}}
 
       - name: Install test dependencies.
         run: make ansible-deps
