@@ -1,0 +1,8 @@
+---
+version: "3"
+
+tasks:
+  encrypt:
+    desc: Encrypt given file
+    cmds:
+      - sops -i -e {{.CLI_ARGS}}
