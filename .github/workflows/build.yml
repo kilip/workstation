@@ -1,9 +1,9 @@
 name: docker
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+  schedule:
+    - cron: "10 1 * * 0"
   push:
     branches:
       - main
