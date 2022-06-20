@@ -1,6 +1,0 @@
----
-- name: Prepare
-  hosts: all
-  tasks:
-    - name: Prepare tasks
-      debug: msg="Prepare tasks"

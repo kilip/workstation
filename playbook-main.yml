@@ -1,3 +1,4 @@
+---
 - name: Start Building Workstations
   hosts: all
   become: true

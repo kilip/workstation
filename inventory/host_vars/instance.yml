@@ -6,3 +6,5 @@ google_chrome: no
 vscode: no
 virtualbox: no
 vagrant: no
+ansible_user: ""
+ansible_become_password: ""

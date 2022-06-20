@@ -1,0 +1,17 @@
+---
+version: "3"
+
+tasks:
+  check:
+    desc: Checking workstations build
+    cmds:
+      - ansible-playbook playbook-build.yml --check
+
+  run:
+    desc: Start build workstations
+    cmds:
+      - ansible-playbook playbook-build.yml
+
+  validate:
+    cmds:
+      - ansible-playbook playbook-build.yml

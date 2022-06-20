@@ -3,6 +3,7 @@ version: 3
 includes:
   test: .taskfiles/TestTasks.yml
   sops: .taskfiles/SopsTasks.yml
+  build: .taskfiles/BuildTasks.yml
 tasks:
 
   deps:
@@ -15,11 +16,6 @@ tasks:
     desc: Ping your existing workstation
     cmds:
       - ansible all -m ping
-
-  build:
-    desc: Build workstation
-    cmds:
-      - ansible-playbook playbook-build.yml
 
   age:generate:key:
     desc: 'Generate age key to: {{.SOPS_AGE_KEY_FILE}}'
