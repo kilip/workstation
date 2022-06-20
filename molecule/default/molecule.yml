@@ -14,6 +14,7 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./:/workstation
     groups:
       - ${WS_TEST_GROUP:-workstations}
 
