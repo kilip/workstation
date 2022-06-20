@@ -11,3 +11,6 @@ packages:
 
 proxy: "{{ lookup('env', 'WS_PROXY') }}"
 proxy_cert: "{{ lookup('env', 'WS_PROXY_CERT') }}"
+
+homebrew_brew_git_remote: "git@git.itstoni.com:homebrew/brew.git"
+homebrew_core_git_remote: "git@git.itstoni.com:homebrew/core.git"

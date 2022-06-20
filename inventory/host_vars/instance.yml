@@ -1,5 +1,5 @@
 ---
-build_brew: no
+build_brew: "{{ lookup('env', 'WS_BUILD_BREW') | bool }}"
 
 regolith: no
 google_chrome: no

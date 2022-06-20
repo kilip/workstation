@@ -1,0 +1,14 @@
+version: '3'
+services:
+  workstation:
+    container_name: workstation
+    image: ghcr.io/kilip/workstation:latest
+    build:
+      context: .
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /run
+      - /tmp
+    privileged: true
+    command: /lib/systemd/systemd
