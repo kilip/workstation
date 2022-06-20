@@ -1,0 +1,9 @@
+---
+user: linuxbrew
+bash: no
+zsh: no
+
+build_brew: no
+build_desktop: no
+build_dev: no
+build_shell: no

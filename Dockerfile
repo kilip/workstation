@@ -8,7 +8,8 @@ RUN brew install \
       ansible \
       age \
       go-task/tap/go-task \
-      fish
+      fish \
+      vim
 
 # install oh-my-fish
 RUN curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > /tmp/install \

@@ -61,4 +61,4 @@ tasks:
   docker:
     desc: Login to docker image
     cmds:
-      - docker run -it --tty --volume={{.PWD}}:/workstation:ro ghcr.io/kilip/workstation:latest
+      - docker run -it --tty --volume={{.PWD}}:/workstation:ro --name workstation ghcr.io/kilip/workstation:latest

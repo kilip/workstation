@@ -5,13 +5,13 @@ tasks:
   check:
     desc: Checking workstations build
     cmds:
-      - ansible-playbook playbook-build.yml --check
+      - ansible-playbook playbook-main.yml --check {{.CLI_ARGS}}
 
   run:
     desc: Start build workstations
     cmds:
-      - ansible-playbook playbook-build.yml
+      - ansible-playbook playbook-main.yml {{.CLI_ARGS}}
 
   validate:
     cmds:
-      - ansible-playbook playbook-build.yml
+      - ansible-playbook playbook-main.yml {{.CLI_ARGS}}

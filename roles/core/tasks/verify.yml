@@ -1,6 +1,0 @@
----
-- name: Verify deps
-  ansible.builtin.include_tasks:
-    file: deps/verify.yml
-    apply:
-      tags: verify

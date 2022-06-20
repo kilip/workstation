@@ -1,3 +1,0 @@
----
-- name: Ensure deps on control node
-  ansible.builtin.include_tasks: deps/setup-Debian.yml
