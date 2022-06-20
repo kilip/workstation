@@ -1,7 +1,7 @@
 ---
 - name: Configuring workstations
-  hosts: control_node
-  become: true
+  hosts: localhost
+  become: false
   gather_facts: true
   roles:
     - core

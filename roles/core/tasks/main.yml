@@ -1,15 +1,16 @@
 ---
 - name: Core tasks
   block:
-    - name: Ensure deps task included
+    - name: Ensure user tasks executed
+      ansible.builtin.include_tasks:
+        file: user/main.yml
+        apply:
+          tags: [deps]
+    - name: Ensure deps tasks executed
       ansible.builtin.include_tasks:
         file: deps/main.yml
         apply:
           tags: [deps]
       tags: [deps]
-
-    - name: Ensure control node initialized
-      ansible.builtin.include_tasks: init/main.yml
-      tags: [init]
-
+      when: username != "linuxbrew"
   delegate_to: localhost

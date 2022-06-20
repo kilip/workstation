@@ -1,4 +1,4 @@
-name: Docker
+name: docker
 
 on:
   pull_request:
@@ -27,7 +27,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.DEPLOY_TOKEN }}
       -
         name: Build and push
         uses: docker/build-push-action@v3

@@ -12,6 +12,10 @@ tasks:
       - ansible-galaxy install -r requirements.yml
       - ansible-galaxy collection install -r requirements.yml
 
+  configure:
+    desc: Configure control node
+    cmds:
+      - ansible-playbook playbook-configure.yml
   ping:
     desc: Ping your existing workstation
     cmds:
@@ -45,11 +49,16 @@ tasks:
       tempfile: /tmp/{{.filename}}
       target: '{{.ENCRYPT_TARGET}}/gpg/{{.filename}}'
 
+  docker:build:
+    desc: Build docker
+    cmds:
+      - docker build -t ghcr.io/kilip/workstation:latest .
   docker:run:
     desc: Run docker image
     cmds:
       - docker-compose up -d
-  docker:login:
+
+  docker:
     desc: Login to docker image
     cmds:
-      - docker-compose exec workstation fish
+      - docker run -it --tty --volume={{.PWD}}:/workstation:ro ghcr.io/kilip/workstation:latest
