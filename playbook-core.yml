@@ -1,6 +1,0 @@
----
-- name: Ensure control-node dependencies installed
-  hosts: localhost
-  gather_facts: yes
-  roles:
-    - name: core

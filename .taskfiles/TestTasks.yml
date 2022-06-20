@@ -1,0 +1,19 @@
+---
+version: "3"
+
+tasks:
+
+  converge:
+    desc: Execute molecule converge
+    cmds:
+      - molecule converge
+
+  destroy:
+    desc: Execute molecule destroy task
+    cmds:
+      - molecule destroy
+
+  login:
+    desc: Login into test node
+    cmds:
+      - molecule login

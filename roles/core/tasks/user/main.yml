@@ -1,0 +1,32 @@
+---
+- name: Ensure user ssh dir exists
+  ansible.builtin.file:
+    path: "{{ userhome }}/.ssh"
+    state: directory
+    mode: "0700"
+
+- name: Ensure ssh keys copied
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ userhome }}/.ssh"
+    mode: "0600"
+  loop: "{{ user_ssh_keys }}"
+  loop_control:
+    label: "{{ item }}"
+
+- name: Ensure ssh public keys copied
+  ansible.builtin.copy:
+    src: "{{ item }}.pub"
+    dest: "{{ userhome }}/.ssh"
+    mode: "0600"
+  loop: "{{ user_ssh_keys }}"
+  loop_control:
+    label: "{{ item }}.pub"
+
+- name: Ensure ssh-key added to agent
+  ansible.builtin.shell:
+    cmd: eval `ssh-agent` && ssh-add {{ userhome }}/.ssh/{{ item | basename }}
+    chdir: "{{ userhome }}"
+    executable: "/bin/bash"
+  changed_when: false
+  loop: "{{ user_ssh_keys }}"

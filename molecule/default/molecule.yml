@@ -1,7 +1,9 @@
 ---
 dependency:
   name: galaxy
-
+  options:
+    role-file: ../../requirements.yml
+    collection-file: ../../requirements.yml
 driver:
   name: docker
 
@@ -12,17 +14,18 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./:/workstation
     groups:
-      - workstations
-      - servers
+      - ${WS_TEST_GROUP:-workstations}
 
 provisioner:
   name: ansible
   playbooks:
-    converge: ../../playbook-build.yml
+    converge: ../../playbook-main.yml
   inventory:
     links:
       group_vars: ../../inventory/group_vars
+      host_vars: ../../inventory/host_vars
   config_options:
     defaults:
       vars_plugins_enabled: host_group_vars,community.sops.sops

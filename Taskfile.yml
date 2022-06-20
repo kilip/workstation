@@ -1,5 +1,9 @@
 version: 3
 
+includes:
+  test: .taskfiles/TestTasks.yml
+  sops: .taskfiles/SopsTasks.yml
+  build: .taskfiles/BuildTasks.yml
 tasks:
 
   deps:
@@ -8,20 +12,14 @@ tasks:
       - ansible-galaxy install -r requirements.yml
       - ansible-galaxy collection install -r requirements.yml
 
+  configure:
+    desc: Configure control node
+    cmds:
+      - ansible-playbook playbook-configure.yml
   ping:
     desc: Ping your existing workstation
     cmds:
       - ansible all -m ping
-
-  build:
-    desc: Build workstation
-    cmds:
-      - ansible-playbook playbook-build.yml
-
-  login:
-    desc: Login into test node
-    cmds:
-      - molecule login
 
   age:generate:key:
     desc: 'Generate age key to: {{.SOPS_AGE_KEY_FILE}}'
@@ -50,3 +48,17 @@ tasks:
       filename: gpg-{{.CLI_ARGS}}.key
       tempfile: /tmp/{{.filename}}
       target: '{{.ENCRYPT_TARGET}}/gpg/{{.filename}}'
+
+  docker:build:
+    desc: Build docker
+    cmds:
+      - docker build -t ghcr.io/kilip/workstation:latest .
+  docker:run:
+    desc: Run docker image
+    cmds:
+      - docker-compose up -d
+
+  docker:
+    desc: Login to docker image
+    cmds:
+      - docker run -it --tty --volume={{.PWD}}:/workstation:ro ghcr.io/kilip/workstation:latest

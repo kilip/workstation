@@ -5,6 +5,8 @@
     "**/roles/**/*.yml": "ansible",
     "**/molecule/*/playbook-*.yml": "ansible",
     "**/playbook-*.yml": "ansible",
-    "**/.envrc*": "shellscript"
+    "**/.envrc*": "shellscript",
+    "**/inventory/*.yml": "yaml",
+    "**/*.sops.yml": "yaml",
   }
 }

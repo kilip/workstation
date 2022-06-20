@@ -1,7 +1,16 @@
+# shell section
 build_shell: true
 
 omf: true
+omf_theme: bobthefish
+
 omz: true
 
-ws_proxy: "{{ lookup('env', 'WS_PROXY') }}"
-ws_proxy_cert: "{{ lookup('env', 'WS_PROXY_CERT') }}"
+packages:
+  - pass
+
+proxy: "{{ lookup('env', 'WS_PROXY') }}"
+proxy_cert: "{{ lookup('env', 'WS_PROXY_CERT') }}"
+
+homebrew_brew_git_remote: "git@git.itstoni.com:homebrew/brew.git"
+homebrew_core_git_remote: "git@git.itstoni.com:homebrew/core.git"

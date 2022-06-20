@@ -1,34 +1,9 @@
 #!make
 
-PROJECT_DIR := ${PWD}
+.DEFAULT_GOAL := run
 
-ansible-deps:
-	pip3 install -r requirements.txt
-	ansible-galaxy install -r requirements.yml
-	ansible-galaxy collection install -r requirements.yml
+docker:
+	docker build -t ghcr.io/kilip/workstation:latest .
 
-deps:
-	ansible-playbook playbook-core.yml --tags=deps
-
-converge:
-	molecule converge
-
-verify:
-	molecule verify
-
-destroy:
-	molecule destroy
-
-testing:
-	molecule --version
-	molecule test
-
-login:
-	molecule login
-
-configure:
-	ansible-playbook playbook-core.yml --tags=configure
-
-ping:
-	echo ${SOPS_AGE_KEY_FILE}
-	ansible all -m ping
+run:
+	docker run -it --tty --volume="${PWD}:/workstation:ro" ghcr.io/kilip/workstation:latest

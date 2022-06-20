@@ -1,7 +1,7 @@
 ---
-- name: Converge
+- name: Start Building Workstations
   hosts: all
-  tasks:
-    - name: "Include live-workstation"
-      include_role:
-        name: "live-workstation"
+  become: true
+  gather_facts: true
+  roles:
+    - kilip.workstation.build
