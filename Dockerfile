@@ -2,12 +2,6 @@ FROM homebrew/ubuntu22.04:latest
 
 LABEL maintainer="Anthonius Munthi"
 
-ENV SHELL /usr/bin/fish
-ENV TERM xterm-256color
-ENV PY_COLORS 1
-ENV ANSIBLE_FORCE_COLOR 1
-ENV HOMEBREW_NO_AUTO_UPDATE 0
-
 RUN brew install \
       direnv \
       sops \
@@ -34,8 +28,13 @@ COPY ./etc/config.fish /root/.config/fish/config.fish
 COPY ./ /workstation
 WORKDIR /workstation
 
+ENV SHELL /usr/bin/fish
+ENV TERM xterm-256color
+ENV PY_COLORS 1
+ENV ANSIBLE_FORCE_COLOR 1
 ENV SOPS_AGE_KEY_FILE "/workstation/.private/secrets/age.txt"
 ENV ANSIBLE_VAULT_PASSWORD_FILE "/workstation/.private/secrets/vault-password.txt"
+
 RUN direnv allow . && ansible-playbook playbook-configure.yml
 
 VOLUME ["/workstation"]
