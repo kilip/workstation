@@ -48,8 +48,8 @@ tasks:
   docker:run:
     desc: Run docker image
     cmds:
-      - docker run --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro --tmpfs=/run --tmpfs=/tmp --name workstation rndmh3ro/docker-ubuntu2004-ansible --command=/lib/systemd/systemd
+      - docker-compose up -d
   docker:login:
     desc: Login to docker image
     cmds:
-      - docker exec --tty workstation fish
+      - docker-compose exec workstation fish

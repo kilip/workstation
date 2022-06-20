@@ -1,6 +1,8 @@
 FROM ubuntu:20.04
 LABEL maintainer="Anthonius Munthi"
 
+ENV SHELL /usr/bin/fish
+ENV TERM xterm-256color
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies.
@@ -40,14 +42,6 @@ RUN apt-get update \
   && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
   && apt-get clean
 
-RUN curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > /tmp/install \
-  && NONINTERACTIVE=1 fish /tmp/install \
-  && chsh -s /usr/bin/fish \
-  && git clone --depth=1 https://github.com/oh-my-fish/theme-bobthefish /root/.local/share/omf/themes/bobthefish \
-  && rm /tmp/install
-
-ENV SHELL /usr/bin/fish
-
 # Install Ansible via Pip.
 RUN pip install --upgrade pip \
   && pip install setuptools wheel \
@@ -60,8 +54,19 @@ RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin
 RUN mkdir -p /etc/ansible \
   && echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
+RUN curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > /tmp/install \
+  && NONINTERACTIVE=1 fish /tmp/install \
+  && chsh -s /usr/bin/fish \
+  && fish -c "omf install bobthefish" \
+  && fish -c "omf theme bobthefish" \
+  && rm /tmp/install
+COPY ./etc/config.fish /root/.config/fish/config.fish
+
 COPY ./ /workstation
 WORKDIR /workstation
+RUN ansible-galaxy install -r requirements.yml \
+  && ansible-galaxy collection install -r requirements.yml
+
 RUN rm -rf /workstation/.git \
   rm -f /lib/systemd/system/systemd*udev* \
   && rm -f /lib/systemd/system/getty.target
