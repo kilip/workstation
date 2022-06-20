@@ -1,4 +1,4 @@
-name: docker
+name: Docker
 
 on:
   workflow_dispatch:
@@ -15,6 +15,16 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
+      - name: Export secrets
+        run: |
+          direnv allow
+          mkdir -p .private/secrets
+          echo "${AGE_SECRET_KEY}" > .private/secrets/age.txt
+          echo "${VAULT_PASSWORD}" > .private/secrets/vault-password.txt
+        env:
+          AGE_SECRET_KEY: ${{ secrets.WS_AGE_SECRET_KEY}}
+          VAULT_PASSWORD: ${{ secrets.WS_VAULT_PASSWORD}}
+
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
